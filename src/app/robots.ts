@@ -1,0 +1,14 @@
+import type { MetadataRoute } from "next";
+import { baseUrl } from "@/lib/seo";
+
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: {
+      userAgent: "*",
+      allow: "/",
+      // Nothing to index behind the form endpoint.
+      disallow: ["/api/"],
+    },
+    sitemap: new URL("/sitemap.xml", baseUrl).toString(),
+  };
+}
