@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { nav, site } from "@/content/site";
 import { ButtonLink } from "@/components/ui/Button";
+import { Logo } from "@/components/brand/Logo";
 import { EASE_OUT_EXPO } from "@/lib/motion";
 
 export function Nav() {
@@ -46,12 +47,8 @@ export function Nav() {
       }`}
     >
       <div className="shell flex h-20 items-center justify-between gap-6">
-        <Link
-          href="/"
-          className="text-caption uppercase tracking-[0.22em] text-white"
-          aria-label={`${site.name} — home`}
-        >
-          {site.name}
+        <Link href="/" className="text-white" aria-label={`${site.name} — home`}>
+          <Logo />
         </Link>
 
         <nav aria-label="Main" className="hidden items-center gap-9 md:flex">

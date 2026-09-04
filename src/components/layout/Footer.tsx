@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { footerNav, site } from "@/content/site";
 import { TextLink } from "@/components/ui/Button";
+import { Logo } from "@/components/brand/Logo";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -10,7 +11,7 @@ export function Footer() {
       <div className="shell py-16 lg:py-24">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <p className="text-caption uppercase tracking-[0.22em] text-white">{site.name}</p>
+            <Logo className="text-white" />
             <p className="measure mt-5 text-body text-gray-3">{site.description}</p>
             <div className="mt-8">
               <TextLink href="/contact">Start a project</TextLink>

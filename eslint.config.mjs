@@ -15,6 +15,9 @@ const eslintConfig = [
     ignores: [
       "node_modules/**",
       ".next/**",
+      // Verification builds made with NEXT_DIST_DIR land in .next-something,
+      // and linting generated output buries the real findings.
+      ".next-*/**",
       "out/**",
       "build/**",
       "next-env.d.ts",

@@ -131,6 +131,27 @@ leaves for a font CDN. The scale is defined once as `--text-*` tokens, each
 carrying its own line-height, tracking and weight, so `text-display-1` sets all
 four at once.
 
+### The logo
+
+`src/components/brand/Logo.tsx`. The device is the full stop — it is already in
+the hero, where "stay built." ends in a purple period, and it carries the
+studio's posture: a finished statement, a price said out loud.
+
+- `<Logo />` is the lockup: the `A.` monogram beside the ARUWEB wordmark.
+- `<Logo variant="mark" />` is the monogram alone, for tight spaces.
+- `src/app/icon.svg` is the favicon, drawn with the **same** path data.
+
+The A is geometry, not Poppins outlines, so the mark is identical everywhere
+including the favicon where no webfont has loaded. Letterforms inherit
+`currentColor`; only the dot is pinned to the accent. Two rules if you edit it:
+
+- **The dot appears once.** Setting it on the monogram *and* the wordmark reads
+  as a stutter and spends the device twice, so the wordmark runs clean.
+- **`Logo.tsx` and `icon.svg` must stay in sync.** They deliberately duplicate
+  the same three path commands; change one and change the other.
+
+Verified legible down to 16px and on light backgrounds.
+
 ---
 
 ## Motion
