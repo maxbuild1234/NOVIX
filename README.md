@@ -1,12 +1,36 @@
-# AruWeb
+# NOVIX
 
-Marketing site for AruWeb, a website design studio in Oranjestad, Aruba. The
-business model is recurring: we design and build a site, then keep it running on
-a monthly maintenance plan. The site is built around that — the plans section is
-the main conversion target, and every case study says which plan the client is on.
+Marketing site for NOVIX (formerly AruWeb), a website design studio in
+Oranjestad, Aruba. The business model is recurring: we design and build a site,
+then keep it running on a monthly maintenance plan. The site is built around
+that — the plans section is the main conversion target, and every case study says
+which plan the client is on.
 
 Next.js 15 (App Router) · TypeScript · Tailwind CSS v4 · Framer Motion · Lenis.
 No CMS and no database: all content lives in typed files under `src/content/`.
+
+---
+
+## Status
+
+The studio has been renamed from AruWeb to NOVIX. **The site itself still
+renders the old name** until the rename is carried into the code:
+
+| Where | Still says |
+| --- | --- |
+| `src/content/site.ts` | `name`, `legalName`, `url` (`aruweb.aw`), `email` |
+| `src/components/brand/Logo.tsx` + `src/app/icon.svg` | The `A.` monogram and ARUWEB wordmark |
+| `package.json` | `"name": "aruweb"` |
+
+Before launch:
+
+- [ ] Carry the NOVIX name into the files above and redraw the monogram
+- [ ] Confirm the three monthly prices ($89 / $229 / $549) in `src/content/plans.ts`
+- [ ] Replace the placeholder address and email in `src/content/site.ts`
+- [ ] Replace the generated images in `public/work/` and `public/og.png`
+- [ ] Connect the contact form to a mail provider (see below)
+- [ ] Add an `apple-icon` so iOS home-screen saves get the logo
+- [ ] Choose a host and deploy — the site is not live anywhere yet
 
 ---
 
@@ -38,7 +62,8 @@ NEXT_DIST_DIR=.next-verify npm run build
 ```
 
 `NEXT_DIST_DIR` defaults to `.next`, so Vercel and every other host need no
-configuration for this.
+configuration for this. ESLint ignores `.next-*/**`, so a verification build
+does not flood `npm run lint` with thousands of errors from generated files.
 
 ---
 
@@ -152,6 +177,9 @@ including the favicon where no webfont has loaded. Letterforms inherit
 
 Verified legible down to 16px and on light backgrounds.
 
+> The current mark is the AruWeb `A.` and has not been redrawn for NOVIX yet.
+> The rules above still apply to the new mark.
+
 ---
 
 ## Motion
@@ -214,6 +242,10 @@ Aruba and exposes the three plans as `Offer` entries.
 
 ## Deploying
 
-Push to a Git repository and import it on Vercel. No configuration, no
-environment variables, no build command overrides. Every page is statically
-generated except `/api/contact`.
+Not deployed yet. Every page is statically generated except `/api/contact`, so
+it runs on any host that supports Node.js:
+
+- **Vercel:** import the repository. No configuration, no environment
+  variables, no build command overrides.
+- **Hostinger:** the studio's existing hosting plan runs Node.js apps, which
+  keeps NOVIX on the same infrastructure its client sites use.
